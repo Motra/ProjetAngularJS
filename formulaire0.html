@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+	<head>
+		<title></title>
+	</head>
+  </head>
+  <body ng-app ="MonApp">
+
+  		<input type="text" ng-model="query"/>
+  		<select ng-model="order">
+  			<option value = "username"> Organiser par Nom </option>
+  			<option value = "content">Organiser par  Commentaire  </option>
+  			<option value = "City">Organiser par Ville </option>
+  		</select> 
+
+	 <div ng-controller="CommentsCtrl">
+	 	 <div ng-repeat="comment in comments | filter: {content: query} | orderBy: order"> 
+	 	 	<p>
+	 	 		<strong>{{comment.username}}</strong></br>
+	 	 		 {{comment.City}} </br>
+	 	 		<strong>{{comment.email}}</strong></br>
+	 	 		 {{comment.content}} 
+	 	 	</p>
+	 	 </div>
+	 </div>
+	 	
+		<script src= https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js></script>
+
+		<script>
+
+		var app = angular.module('MonApp', []);
+		app.controller('CommentsCtrl', function ($scope){
+			$scope.comments = [
+			{
+				"username": "Dillon", 
+			"City": "Nile",
+			"email": "d@fff.com",
+			"content": "Salut tout le monde"},
+
+			{
+				"username": "Olivia", 
+			"City": "Utting",
+			"email": "ol@fff.com",
+			"content": "Olivia comment"},
+
+			{
+				"username": "John", 
+			"City": "Paris",
+			"email": "mt@fff.fr",
+			"content": "commentaire de John"},
+
+
+			{
+				"username": "Mohamed", 
+			"City": "Grenoble",
+			"email": "motra@fff.com",
+			"content": "qu'il fait beau!"},
+			];
+		
+			
+		});
+
+		</script>
+	
+  </body>
+</html>
